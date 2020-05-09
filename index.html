@@ -127,7 +127,7 @@ font-size: 24px;
     <hr style="width:200px" class="w3-opacity">
 
 
-    <form id="contact-form" method="post" action="contact.php" role="form">
+    <form id="cform" onsubmit="return postToGoogle(event);">
 
     <div class="messages"></div>
 
@@ -177,3 +177,58 @@ font-size: 24px;
     
 </body>
 </html>
+
+
+
+<script>
+    function postToGoogle(e) {
+        e.preventDefault();
+        const name = "form_name";
+        const email = "form_lastname";
+        const msg = "form_message";
+
+        var field1 = document.getElementById(name).value;
+        var field2 = document.getElementById(email).value;
+        var field3 = document.getElementById(msg).value;
+
+
+        if (field1 === "") {
+            alert('Please Fill Your Name');
+            document.getElementById(name).focus();
+            return false;
+        }
+        if (field2 === "") {
+            alert('Please Fill Your Email');
+            document.getElementById(email).focus();
+            return false;
+        }
+        if (field3 === "" || field3.length > 120) {
+            if (field3.length > 120) {
+                alert('It should be less than 120 words');
+            } else {
+                alert('Your message should not be blank.');
+            }
+            document.getElementById(msg).focus();
+            return false;
+        }
+
+        $.ajax({
+            url: "https://docs.google.com/forms/d/e/1FAIpQLSeRZC-2bXTxZ0hReG5jFTZEvBwF46s0pF06w8Nciy7wvZIEqg/formResponse?",
+            data: {
+                "entry.1604611595": field1,
+                "entry.972736843": field2,
+                "entry.889856713": field3
+            },
+            type: "POST",
+            dataType: "xml",
+            success: function(d) {
+                alert(d);
+            },
+            error: function(x, y, z) {
+                alert('Your message has been sent successfully.😉');
+                document.getElementById("cForm").reset();
+            }
+        });
+        return false;
+    }
+</script>
