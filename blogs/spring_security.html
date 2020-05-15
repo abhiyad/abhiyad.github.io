@@ -10,7 +10,12 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-        <link href='custom.css' rel='stylesheet' type='text/css'>
+<link href="prism.css" rel="stylesheet" />
+<script src="prism.js"></script>
+
+<link href='blogs.css' rel='stylesheet'>
+
+
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -52,12 +57,12 @@ font-size: 24px;
 
 
 </style>
-<body class="w3-black">
+<body class="w3-white">
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
   <!-- Avatar image in top left corner -->
-  <img src="images/abhishek_small.jpg" style="width:100%">
+  <img src="../images/abhishek_small.jpg" style="width:100%">
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
     <i class="fa fa-home w3-xxlarge"></i>
     <p>HOME</p>
@@ -87,12 +92,50 @@ font-size: 24px;
 </div>
 
 
-<div style="text-align: center">
-	HELLO THERE I WILL WRITE HERE ! 
-</div>
-<div style="text-align: center"> 
-	<div class="tip" markdown="1">Have **fun!**</div>
-</div>
+<h1 class="main">Getting Started with Spring Security</h1>
+<h2 class="headings">SUB HEADINGS</h2>
+<h5 class="text">
+In this blog we will be making a simple login sign up app using Spring Security and postgres SQL
+</h5>
+<pre>
+<code class="language-java">
+package com.springframework.services;
+import com.springframework.repositories.MyUserRepository;
+import com.springframework.domain.MyUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.User.UserBuilder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class MyUserService {
+    private MyUserRepository repository;
+    private BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    public MyUserService(MyUserRepository repository){
+        this.passwordEncoder = new BCryptPasswordEncoder();
+        this.repository  = repository;
+    }
+
+    public MyUser loadUserByUsername(String username){
+        return repository.findMyUserByUsername(username);
+    }
+    public void saveMyUser(String name,String username,String password,String role){
+        MyUser user = new MyUser(name,username,passwordEncoder.encode(password),role);
+        //need to add some checks here!!
+        System.out.println("saved password ============== " + user.getPassword());
+        repository.save(user);
+    }
+}
+</code>
+</pre>
+
 
 
 <!-- Page Content -->
