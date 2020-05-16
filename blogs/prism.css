@@ -50,8 +50,7 @@ pre[class*="language-"] {
 	overflow: auto;
 	/*border: .3em solid hsl(30, 20%, 40%);*/
 	/*border-radius: .5em;*/
-	margin-left: 20%;
-	margin-right: 10%;
+	max-width: 100%;
 	/*box-shadow: 1px 1px .5em black inset;*/
 }
 
