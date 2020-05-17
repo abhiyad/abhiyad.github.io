@@ -164,7 +164,7 @@ public class MyUserService {
 </code></pre>
 
 <p class="text">
-Now comes the interesting part of inheriting and abstract standard class UserDetailsService of Spring Security, and making our database work with it. For that we need to return standard object of the type <strong>org.springframework.security.core.userdetails.User</strong> from the function <strong>loadUserByUsername(String username)</strong>, since we are inheriting an abstract class and hence we need to override that function. You can read more about <a href="https://docs.spring.io/spring-security/site/docs/3.0.x/apidocs/org/springframework/security/core/userdetails/UserDetailsService.html">UserDetailsService</a> from the docs. This piece of code has two helper functions, one of them is there to set an authority to the User and the other to return a standard object of UserDetails using the available information.
+Now comes the interesting part of inheriting and abstract standard class UserDetailsService of Spring Security, and making our database work with it. For that we need to return standard object of the type <strong><a href="https://docs.spring.io/spring-security/site/docs/3.0.x/apidocs/org/springframework/security/core/userdetails/User.html">User</a></strong> from the function <strong>loadUserByUsername(String username)</strong>, since we are inheriting an abstract class and hence we need to override that function. You can read more about <a href="https://docs.spring.io/spring-security/site/docs/3.0.x/apidocs/org/springframework/security/core/userdetails/UserDetailsService.html">UserDetailsService</a> from the docs. This piece of code has two helper functions, one of them is there to set an authority to the User and the other to return a standard object of UserDetails using the available information.
 <br>
 We have used our <strong>MyUserService</strong> to use the method loadUserByUsername().
 We would be using this class <strong>MyUserDetailsService</strong> with Spring Security to authenticate User.
@@ -255,6 +255,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 </code></pre>
 </div>
-
+TO BE CONTINUED .... 
 </body>
 </html>
