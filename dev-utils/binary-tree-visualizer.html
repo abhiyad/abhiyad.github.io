@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Tree Visualizer</title>
+    <link rel="stylesheet" href="dev-utils.css" />
+  </head>
+  <body>
+    <nav class="util-nav">
+      <a class="logo" href="../index.html">Abhishek Yadav</a>
+      <a href="../index.html#dev-utils">&larr; Dev Utils</a>
+    </nav>
+
+    <main class="util-main">
+      <p class="section__text__p1">Dev Utils</p>
+      <h1 class="title">Binary Tree Visualizer</h1>
+      <p class="subtitle">
+        Paste a LeetCode-style level-order array like
+        <code>[5,6,6,null,null,8,6,10,null,5]</code>. Each node takes the next two
+        entries as its children; <code>null</code> means no child.
+      </p>
+
+      <div class="panel">
+        <label for="input" class="label">Tree</label>
+        <textarea id="input" spellcheck="false" rows="3"></textarea>
+        <p id="error" class="error" role="alert"></p>
+
+        <div class="controls">
+          <div class="spacer"></div>
+          <button class="btn btn-color-2" id="sample">Sample</button>
+          <button class="btn btn-color-2" id="copy-link">Copy link</button>
+        </div>
+      </div>
+
+      <div id="stats" class="stats"></div>
+
+      <div class="panel chart-panel">
+        <div id="tree-wrap" class="chart-wrap tree-wrap">
+          <svg id="tree" role="img" aria-label="Binary tree drawing"></svg>
+          <p id="tree-empty" class="tree-empty" hidden>Empty tree</p>
+        </div>
+        <p class="hint">Hover a node to see its depth and array index.</p>
+      </div>
+    </main>
+
+    <script src="binary-tree-visualizer.js"></script>
+  </body>
+</html>

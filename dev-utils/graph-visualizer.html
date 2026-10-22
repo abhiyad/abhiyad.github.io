@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph Visualizer</title>
+    <link rel="stylesheet" href="dev-utils.css" />
+  </head>
+  <body>
+    <nav class="util-nav">
+      <a class="logo" href="../index.html">Abhishek Yadav</a>
+      <a href="../index.html#dev-utils">&larr; Dev Utils</a>
+    </nav>
+
+    <main class="util-main">
+      <p class="section__text__p1">Dev Utils</p>
+      <h1 class="title">Graph Visualizer</h1>
+      <p class="subtitle">
+        Paste a LeetCode-style edge list like <code>[[3,1],[3,2],[1,4],[2,0]]</code>
+        or weighted <code>[[u,v,w],...]</code>. Trees are drawn top-down, DAGs in layers,
+        and everything else with a force layout.
+      </p>
+
+      <div class="panel">
+        <div class="fields">
+          <div class="field field-n">
+            <label for="n" class="label">Nodes (n)</label>
+            <input id="n" class="text-input" type="number" min="0" placeholder="auto" />
+          </div>
+          <div class="field field-edges">
+            <label for="edges" class="label">Edges</label>
+            <textarea id="edges" spellcheck="false" rows="3"></textarea>
+          </div>
+        </div>
+        <p id="error" class="error" role="alert"></p>
+
+        <div class="controls">
+          <label>
+            <select id="base">
+              <option value="0">0-indexed</option>
+              <option value="1">1-indexed</option>
+            </select>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="directed" />
+            Directed
+          </label>
+          <label>
+            Layout
+            <select id="layout">
+              <option value="auto">Auto</option>
+              <option value="tree">Tree (BFS from root)</option>
+              <option value="layered">Layered (DAG)</option>
+              <option value="force">Force-directed</option>
+              <option value="circle">Circle</option>
+            </select>
+          </label>
+          <label>
+            Root
+            <input id="root" type="number" placeholder="auto" />
+          </label>
+          <div class="spacer"></div>
+          <button class="btn btn-color-2" id="sample">Sample</button>
+          <button class="btn btn-color-2" id="relayout">Re-layout</button>
+          <button class="btn btn-color-2" id="copy-link">Copy link</button>
+        </div>
+      </div>
+
+      <div id="stats" class="stats"></div>
+
+      <div class="panel chart-panel">
+        <div id="chart-wrap" class="chart-wrap">
+          <svg id="graph" role="img" aria-label="Graph drawing"></svg>
+        </div>
+        <p id="status" class="hint"></p>
+      </div>
+
+      <div class="panel">
+        <div class="output-head">
+          <span class="label">Adjacency list</span>
+          <button class="btn btn-color-2" id="copy-adj">Copy</button>
+        </div>
+        <pre id="adj-out" class="output"></pre>
+        <div class="output-head output-gap">
+          <span class="label" id="extra-label"></span>
+        </div>
+        <pre id="extra-out" class="output"></pre>
+      </div>
+    </main>
+
+    <script src="graph-visualizer.js"></script>
+  </body>
+</html>

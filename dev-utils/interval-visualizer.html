@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interval Visualizer</title>
+    <link rel="stylesheet" href="dev-utils.css" />
+  </head>
+  <body>
+    <nav class="util-nav">
+      <a class="logo" href="../index.html">Abhishek Yadav</a>
+      <a href="../index.html#dev-utils">&larr; Dev Utils</a>
+    </nav>
+
+    <main class="util-main">
+      <p class="section__text__p1">Dev Utils</p>
+      <h1 class="title">Interval Visualizer</h1>
+      <p class="subtitle">
+        Paste LeetCode-style intervals like <code>[[1,3],[2,6],[8,10]]</code>.
+        Endpoints are inclusive. Colours mark which intervals merge together.
+      </p>
+
+      <div class="panel">
+        <label for="input" class="label">Intervals</label>
+        <textarea id="input" spellcheck="false" rows="3"></textarea>
+        <p id="error" class="error" role="alert"></p>
+
+        <div class="controls">
+          <label>
+            Order
+            <select id="order">
+              <option value="input">Input order</option>
+              <option value="start">Sort by start</option>
+              <option value="end">Sort by end</option>
+              <option value="length">Sort by length</option>
+            </select>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="pack" />
+            Pack into lanes
+          </label>
+          <div class="spacer"></div>
+          <button class="btn btn-color-2" id="sample">Sample</button>
+          <button class="btn btn-color-2" id="copy-link">Copy link</button>
+        </div>
+      </div>
+
+      <div id="stats" class="stats"></div>
+
+      <div class="panel chart-panel">
+        <div id="chart-wrap" class="chart-wrap">
+          <svg id="chart" role="img" aria-label="Interval chart"></svg>
+          <div id="tooltip" class="tooltip" hidden></div>
+        </div>
+        <p class="hint">Hover anywhere on the chart to see which intervals cover that point.</p>
+      </div>
+
+      <div class="panel">
+        <div class="output-head">
+          <span class="label">Merged</span>
+          <button class="btn btn-color-2" id="copy-merged">Copy</button>
+        </div>
+        <pre id="merged-out" class="output"></pre>
+      </div>
+    </main>
+
+    <script src="interval-visualizer.js"></script>
+  </body>
+</html>

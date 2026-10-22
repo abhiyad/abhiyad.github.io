@@ -1,0 +1,480 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: white;
+  color: black;
+}
+
+p {
+  color: rgb(85, 85, 85);
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  transition: all 300ms ease;
+}
+
+a:hover {
+  color: grey;
+}
+
+code,
+pre,
+textarea {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* NAV */
+
+.util-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 16px;
+}
+
+.util-nav .logo {
+  font-size: 1.5rem;
+}
+
+/* LAYOUT */
+
+.util-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px 4rem;
+}
+
+.section__text__p1 {
+  text-align: center;
+  font-weight: 600;
+}
+
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  margin: 0.5rem auto 2rem;
+  max-width: 40rem;
+}
+
+.subtitle code {
+  background: rgb(240, 240, 240);
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.3rem;
+  font-size: 0.9em;
+}
+
+.panel {
+  border: 0.1rem solid rgb(163, 163, 163);
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  font-size: 0.9rem;
+  padding: 0.75rem;
+  border: 0.1rem solid rgb(200, 200, 200);
+  border-radius: 0.75rem;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: rgb(53, 53, 53);
+}
+
+.error {
+  color: #c0392b;
+  font-size: 0.85rem;
+  min-height: 1.2rem;
+  margin-top: 0.25rem;
+}
+
+/* CONTROLS */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.controls select {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid rgb(163, 163, 163);
+  background: white;
+}
+
+.controls select:disabled {
+  opacity: 0.5;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.btn {
+  font-family: inherit;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  border-radius: 2rem;
+  border: rgb(53, 53, 53) 0.1rem solid;
+  background: none;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.btn:hover {
+  background: rgb(53, 53, 53);
+  color: white;
+}
+
+/* STATS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.stat {
+  border: 0.1rem solid rgb(220, 220, 220);
+  border-radius: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+}
+
+.stat-value {
+  font-size: 1.35rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-note {
+  font-size: 0.75rem;
+}
+
+/* CHART */
+
+.chart-panel {
+  padding: 0.75rem;
+}
+
+.chart-wrap {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+#chart {
+  display: block;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+}
+
+#chart .grid {
+  stroke: rgb(235, 235, 235);
+}
+
+#chart .axis-label {
+  fill: rgb(120, 120, 120);
+}
+
+#chart .row-label {
+  fill: rgb(120, 120, 120);
+}
+
+#chart .section-label {
+  fill: rgb(53, 53, 53);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+#chart .iv {
+  transition: opacity 120ms ease;
+}
+
+#chart.hovering .iv.dim {
+  opacity: 0.15;
+}
+
+#chart .bar-text-in {
+  fill: white;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+#chart .bar-text-out {
+  fill: rgb(53, 53, 53);
+  pointer-events: none;
+}
+
+#chart .guide {
+  stroke: rgb(53, 53, 53);
+  stroke-dasharray: 3 3;
+  pointer-events: none;
+}
+
+#chart .depth-cell {
+  fill: rgb(190, 190, 190);
+}
+
+#chart .depth-cell.max {
+  fill: rgb(53, 53, 53);
+}
+
+#chart .separator {
+  stroke: rgb(200, 200, 200);
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: rgb(30, 30, 30);
+  color: white;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.5rem;
+  max-width: 260px;
+  z-index: 2;
+}
+
+.tooltip .muted {
+  color: rgb(180, 180, 180);
+}
+
+.hint {
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* OUTPUT */
+
+.output-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.output-head .label {
+  margin: 0;
+}
+
+.output {
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-size: 0.9rem;
+  background: rgb(248, 248, 248);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 2rem;
+  }
+  .spacer {
+    display: none;
+  }
+}
+
+/* GRAPH VISUALIZER */
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.field-n {
+  flex: 0 0 9rem;
+}
+
+.field-edges {
+  flex: 1 1 18rem;
+}
+
+.text-input {
+  width: 100%;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.9rem;
+  padding: 0.75rem;
+  border: 0.1rem solid rgb(200, 200, 200);
+  border-radius: 0.75rem;
+  outline: none;
+}
+
+.text-input:focus {
+  border-color: rgb(53, 53, 53);
+}
+
+.controls input[type="number"] {
+  width: 5rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid rgb(163, 163, 163);
+}
+
+.output-gap {
+  margin-top: 1rem;
+}
+
+#graph {
+  display: block;
+  margin: 0 auto;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  user-select: none;
+}
+
+#graph .edge path {
+  fill: none;
+  stroke: rgb(170, 170, 170);
+  stroke-width: 1.6;
+  transition: opacity 120ms ease;
+}
+
+#graph.directed .edge path {
+  marker-end: url(#arrow);
+}
+
+#graph .edge.hl path {
+  stroke: rgb(53, 53, 53);
+  stroke-width: 2.2;
+}
+
+#graph.directed .edge.hl path {
+  marker-end: url(#arrow-hl);
+}
+
+#graph .edge text {
+  fill: rgb(85, 85, 85);
+  font-size: 11px;
+  text-anchor: middle;
+  dominant-baseline: central;
+  paint-order: stroke;
+  stroke: white;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+#graph .node {
+  cursor: grab;
+  touch-action: none;
+  transition: opacity 120ms ease;
+}
+
+#graph .node:active {
+  cursor: grabbing;
+}
+
+#graph .node circle {
+  stroke: white;
+  stroke-width: 2.5;
+}
+
+#graph .node.root circle {
+  stroke: rgb(53, 53, 53);
+  stroke-width: 3;
+}
+
+#graph .node text {
+  fill: white;
+  font-size: 13px;
+  font-weight: 500;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+#graph.hovering .node.dim,
+#graph.hovering .edge.dim {
+  opacity: 0.18;
+}
+
+/* BINARY TREE */
+
+.tree-wrap {
+  min-height: 120px;
+}
+
+#tree {
+  display: block;
+  margin: 0 auto;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+#tree .tree-edge {
+  stroke: rgb(170, 170, 170);
+  stroke-width: 1.6;
+}
+
+#tree .tree-node circle {
+  fill: rgb(53, 53, 53);
+  stroke: white;
+  stroke-width: 2.5;
+}
+
+#tree .tree-node.root circle {
+  fill: #4e79a7;
+}
+
+#tree .tree-node:hover circle {
+  fill: #f28e2b;
+}
+
+#tree .tree-node-label {
+  fill: white;
+  font-size: 13px;
+  font-weight: 500;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+.tree-empty {
+  text-align: center;
+  padding: 2.5rem 0;
+}

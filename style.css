@@ -430,3 +430,22 @@ footer {
 footer p {
   text-align: center;
 }
+
+/* DEV UTILS SECTION */
+
+#dev-utils {
+  height: fit-content;
+  margin-bottom: 4rem;
+}
+
+.dev-utils-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 380px));
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.dev-utils-container p {
+  margin-bottom: 1.5rem;
+}
